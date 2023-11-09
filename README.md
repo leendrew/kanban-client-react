@@ -2,12 +2,13 @@
 
 [Server Repo](https://github.com/leendrew/kanban-server-nest)
 
-[Deployed](https://kanban-client-react.onrender.com)
+[Deployed](https://leendrew.github.io/kanban-client-react)
 
 ## Stack
 
 - React
 - Redux Toolkit
+- React Beautiful DnD, React Hook Form, zod
 
 ## Start
 
