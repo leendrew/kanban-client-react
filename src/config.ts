@@ -1,4 +1,5 @@
-type EnvType = Record<string, { key: string; type: string | number | boolean }>;
+type Env = Record<string, { key: string; type: string | number | boolean }>;
+type ConfigType<T extends Env> = { [Key in keyof T]: T[Key]['type'] };
 
 const env = {
   baseUrl: { key: 'BASE_URL', type: String() },
@@ -6,9 +7,7 @@ const env = {
   mode: { key: 'MODE', type: String() },
   isDev: { key: 'DEV', type: Boolean() },
   isProd: { key: 'PROD', type: Boolean() },
-} satisfies EnvType;
-
-type ConfigType<T extends EnvType> = { [Key in keyof T]: T[Key]['type'] };
+} satisfies Env;
 
 export type Config = ConfigType<typeof env>;
 
