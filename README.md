@@ -8,7 +8,10 @@
 
 - React
 - Redux Toolkit
-- React Beautiful DnD, React Hook Form, zod
+- RTK Query
+- React Beautiful DnD
+- React Hook Form
+- zod
 
 ## Start
 

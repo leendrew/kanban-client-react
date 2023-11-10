@@ -7,7 +7,7 @@
     "plugin:react-hooks/recommended",
     "prettier"
   ],
-  "ignorePatterns": ["dist", ".eslintrc.cjs"],
+  "ignorePatterns": ["node_modules", "dist"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["react-refresh"],
   "rules": {
