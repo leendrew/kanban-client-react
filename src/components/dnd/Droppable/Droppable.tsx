@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Droppable } from 'react-beautiful-dnd';
+import { useState, useEffect } from 'react';
+import { Droppable as DndDroppable } from 'react-beautiful-dnd';
 import type { DroppableProps } from 'react-beautiful-dnd';
 
-// React 18 fix
+// React 18 strict mode fix
 // or replace react-beautiful-dnd for @hello-pangea/dnd
 
-export const StrictModeDroppable = ({ children, ...props }: DroppableProps) => {
+export function Droppable({ children, ...props }: DroppableProps) {
   const [isEnabled, setIsEnabled] = useState(false);
 
   useEffect(() => {
@@ -21,5 +21,5 @@ export const StrictModeDroppable = ({ children, ...props }: DroppableProps) => {
     return null;
   }
 
-  return <Droppable {...props}>{children}</Droppable>;
-};
+  return <DndDroppable {...props}>{children}</DndDroppable>;
+}
