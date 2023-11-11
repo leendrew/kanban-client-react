@@ -8,7 +8,7 @@ import { theme } from '@/lib/mui.theme';
 import { router } from '@/router';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
