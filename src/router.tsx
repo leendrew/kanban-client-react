@@ -1,7 +1,7 @@
 import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
 import { config } from '@/config';
-import { MainLayout } from '@/ui/layouts';
+import { MainLayout } from '@ui';
 import { Home } from '@/pages';
 
 const routes = [
