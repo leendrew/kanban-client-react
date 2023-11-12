@@ -15,10 +15,12 @@ export interface LoginPayload {
   password: string;
 }
 
-export interface LoginResponse {
+export interface AuthResponse {
   user: User;
   tokens: Tokens;
 }
+
+export type LoginResponse = AuthResponse;
 
 export interface RegisterPayload {
   login: string;
@@ -27,7 +29,10 @@ export interface RegisterPayload {
   confirmPassword: string;
 }
 
-export interface RegisterResponse {
-  user: User;
-  tokens: Tokens;
+export type RegisterResponse = AuthResponse;
+
+export interface RefreshPayload {
+  refreshToken: Tokens['refresh'];
 }
+
+export type RefreshResponse = AuthResponse;

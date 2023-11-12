@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { AuthState, AuthResponse } from './auth.types';
 import { authApi } from './auth.api';
 import type { AuthState } from './auth.types';
 import { reducerKey } from '../constants';

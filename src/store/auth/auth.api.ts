@@ -1,7 +1,14 @@
-import { PATHS } from '@/config';
+import type {
+  RegisterPayload,
+  RegisterResponse,
+  LoginPayload,
+  LoginResponse,
+  RefreshPayload,
+  RefreshResponse,
+} from './auth.types';
 import { api } from '../api';
-import type { RegisterPayload, RegisterResponse, LoginPayload, LoginResponse } from './auth.types';
 import { HTTP } from '../constants';
+import { PATHS } from '@/config/constants';
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -15,6 +22,13 @@ export const authApi = api.injectEndpoints({
     login: builder.mutation<LoginResponse, LoginPayload>({
       query: (data) => ({
         url: PATHS.auth.login,
+        method: HTTP.post,
+        body: data,
+      }),
+    }),
+    refresh: builder.mutation<RefreshResponse, RefreshPayload>({
+      query: (data) => ({
+        url: PATHS.auth.refresh,
         method: HTTP.post,
         body: data,
       }),

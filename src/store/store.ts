@@ -4,7 +4,7 @@ import type { TypedUseSelectorHook } from 'react-redux';
 import { config } from '@/config';
 import { api } from './api';
 import { authReducer } from './auth';
-import { AUTH_KEY } from './constants';
+import { config } from '@/config';
 
 export const store = configureStore({
   reducer: {
