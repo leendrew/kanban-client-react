@@ -4,8 +4,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { RouterProvider } from 'react-router-dom';
 import { store } from '@/store';
-import { theme } from '@/config/mui.config';
-import { router } from '@/config/router.config';
+import { theme, router } from '@/config';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
