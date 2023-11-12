@@ -1,8 +1,4 @@
-export interface User {
-  id: number;
-  name: string;
-  login: string;
-}
+import type { User } from '../users';
 
 export interface Tokens {
   access: string;
