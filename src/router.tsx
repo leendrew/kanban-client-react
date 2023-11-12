@@ -1,16 +1,8 @@
 import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
-import { config } from '@/config';
+import { config, PATHS } from '@/config';
 import { MainLayout, AuthLayout } from '@ui';
 import { Home, Register, Login } from '@/pages';
-
-export const PATHS = {
-  home: '/',
-  auth: {
-    register: '/auth/register',
-    login: '/auth/login',
-  },
-};
 
 const routes = [
   {
