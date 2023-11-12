@@ -3,12 +3,8 @@ import { config } from '@/config';
 import { AUTH_KEY } from './constants';
 import type { RootState } from './store';
 
-const baseUrl = config.isDev
-  ? 'http://localhost:8080/api'
-  : 'https://kanban-server-nest.onrender.com/api';
-
 const baseQuery = fetchBaseQuery({
-  baseUrl,
+  baseUrl: config.apiUrl,
   prepareHeaders: (headers, { getState }) => {
     const storageData = window.localStorage.getItem(AUTH_KEY);
     if (!storageData) {

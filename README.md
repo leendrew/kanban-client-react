@@ -18,7 +18,7 @@
 ### dev
 
 ```bash
-cp .env.example .env
+cp .env.example .env.local
 yarn
 yarn dev
 ```
@@ -26,7 +26,7 @@ yarn dev
 ### prod
 
 ```bash
-cp .env.example .env
+cp .env.example .env.production
 yarn
 yarn build && yarn preview
 ```
