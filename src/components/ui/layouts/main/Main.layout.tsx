@@ -13,8 +13,8 @@ export function MainLayout() {
           borderBottom: '1px solid var(--border-color_main)',
         }}
       >
-        <Container>
-          <Stack direction="row" alignItems="center">
+        <Container sx={{ height: '100%' }}>
+          <Stack sx={{ height: '100%' }} direction="row" alignItems="center">
             <Link to={PATHS.home}>
               <Box sx={{ width: 130, height: 32 }}>
                 <Logo style={{ width: '100%', height: '100%' }} />
