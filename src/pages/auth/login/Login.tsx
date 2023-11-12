@@ -27,10 +27,8 @@ export function Login() {
 
   const onSubmit = async (data: LoginPayload) => {
     try {
-      const res = await login(data);
-      if (!('error' in res)) {
-        navigate(PATHS.home);
-      }
+      await login(data).unwrap();
+      navigate(PATHS.home);
     } catch (e) {
       console.log('login error', e);
     }
