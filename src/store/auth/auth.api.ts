@@ -1,5 +1,5 @@
+import { PATHS } from '@/config/router.config';
 import { api } from '../api';
-import { PATHS } from '@/router';
 import type { RegisterPayload, RegisterResponse, LoginPayload, LoginResponse } from './auth.types';
 import { HTTP } from '../constants';
 

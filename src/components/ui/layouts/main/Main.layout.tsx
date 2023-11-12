@@ -1,6 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
-import { PATHS } from '@/router';
 import { Box, Container, Stack } from '@mui/material';
+import { PATHS } from '@/config/router.config';
 import Logo from '@/assets/logo.svg?react';
 
 export function MainLayout() {
