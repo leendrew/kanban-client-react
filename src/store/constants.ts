@@ -7,4 +7,7 @@ export const HTTP = {
 };
 export type Http = typeof HTTP;
 
-export const AUTH_KEY = 'auth';
+export const reducerKey = {
+  auth: 'auth',
+  boards: 'boards',
+};

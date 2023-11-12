@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { config } from '@/config';
-import { AUTH_KEY } from './constants';
+import { reducerKey } from './constants';
 import type { RootState } from './store';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: config.apiUrl,
   prepareHeaders: (headers, { getState }) => {
-    const storageData = window.localStorage.getItem(AUTH_KEY);
+    const storageData = localStorage.getItem(reducerKey.auth);
     if (!storageData) {
       return headers;
     }
