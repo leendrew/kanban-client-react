@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Container, Box, Stack, Typography, TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { PATHS } from '@/config/router.config';
+import { PATHS } from '@/router';
 import { Button } from '@/components/ui';
 import { loginSchema } from '@/schemas';
 import Logo from '@/assets/logo.svg?react';
