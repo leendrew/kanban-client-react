@@ -3,6 +3,7 @@ import type { RouteObject } from 'react-router-dom';
 import { config, PATHS } from '@/config';
 import { MainLayout, AuthLayout } from '@ui';
 import { Home, Register, Login } from '@/pages';
+import { WithAuth } from '@/hocs';
 
 const routes = [
   {
@@ -11,7 +12,11 @@ const routes = [
     children: [
       {
         index: true,
-        element: <Home />,
+        element: (
+          <WithAuth>
+            <Home />
+          </WithAuth>
+        ),
       },
     ],
   },
