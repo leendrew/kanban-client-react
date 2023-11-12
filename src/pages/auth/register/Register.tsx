@@ -28,10 +28,8 @@ export function Register() {
   const navigate = useNavigate();
 
   const onSubmit = async (data: RegisterPayload) => {
-    console.log('register payload', data);
     try {
       const res = await register(data);
-      console.log('register response', res);
       if (!('error' in res)) {
         navigate(PATHS.home);
       }

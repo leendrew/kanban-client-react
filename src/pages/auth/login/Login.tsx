@@ -26,10 +26,8 @@ export function Login() {
   const navigate = useNavigate();
 
   const onSubmit = async (data: LoginPayload) => {
-    console.log('login payload', data);
     try {
       const res = await login(data);
-      console.log('login response', res);
       if (!('error' in res)) {
         navigate(PATHS.home);
       }
