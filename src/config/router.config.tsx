@@ -1,6 +1,6 @@
 import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
-import { config } from './env.config';
+import { config } from '@/config';
 import { MainLayout, AuthLayout } from '@ui';
 import { Home, Register, Login } from '@/pages';
 
