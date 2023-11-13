@@ -1,9 +1,11 @@
+import type { Task } from '../tasks';
 import type { User } from '../users';
 
 export interface Board {
   id: number;
   name: string;
   index: number;
+  tasks: Task[] | [];
 }
 
 export interface BoardsState {
