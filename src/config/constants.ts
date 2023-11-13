@@ -5,4 +5,5 @@ export const PATHS = {
     login: '/auth/login',
     refresh: '/auth/refresh',
   },
+  boards: '/boards',
 };
