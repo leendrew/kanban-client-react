@@ -1,7 +1,7 @@
 import { fetchBaseQuery, createApi } from '@reduxjs/toolkit/query/react';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './store';
-import { HTTP } from './constants';
+import { HTTP, HTTP_STATUS } from './constants';
 import { config, PATHS } from '@/config';
 
 const baseQuery = fetchBaseQuery({
@@ -23,7 +23,7 @@ export const baseQueryWithReauth: BaseQueryFn<
 > = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
 
-  if (result.error && result.error.status === 401) {
+  if (result.error && result.error.status === HTTP_STATUS.unathorized) {
     const authState = (api.getState() as RootState).auth;
     const tokens = authState.tokens;
     if (!tokens) {

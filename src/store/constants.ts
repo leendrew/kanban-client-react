@@ -5,7 +5,10 @@ export const HTTP = {
   patch: 'patch',
   delete: 'delete',
 };
-export type Http = typeof HTTP;
+
+export const HTTP_STATUS = {
+  unathorized: 401,
+};
 
 export const reducerKey = {
   auth: 'auth',
