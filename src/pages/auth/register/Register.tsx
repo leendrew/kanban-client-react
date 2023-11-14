@@ -1,13 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Box, Stack, Typography, TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
+import { useDispatch } from '@/store';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { PATHS } from '@/config';
 import { Sheet, Button } from '@/components/ui';
-import { registerSchema } from '@/schemas';
-import Logo from '@/assets/logo.svg?react';
-import { useRegisterMutation } from '@/store/auth';
+import { useRegisterMutation, authActions } from '@/store/auth';
 import type { RegisterPayload } from '@/store/auth';
+import { registerSchema } from '@/schemas';
+import { PATHS } from '@/config';
+import Logo from '@/assets/logo.svg?react';
 
 export function Register() {
   const {
@@ -25,14 +26,15 @@ export function Register() {
     },
   });
   const [register, { isLoading }] = useRegisterMutation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = async (data: RegisterPayload) => {
     try {
-      const res = await register(data);
-      if (!('error' in res)) {
-        navigate(PATHS.home);
-      }
+      const response = await register(data).unwrap();
+      dispatch(authActions.setState(response));
+
+      navigate(PATHS.home);
     } catch (e) {
       console.log('register error', e);
     }

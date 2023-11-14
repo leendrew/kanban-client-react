@@ -1,6 +1,8 @@
 import { fetchBaseQuery, createApi } from '@reduxjs/toolkit/query/react';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './store';
+import { authActions } from './auth/auth.slice';
+import type { AuthResponse } from './auth/auth.types';
 import { HTTP, HTTP_STATUS } from './constants';
 import { config, PATHS } from '@/config';
 
@@ -31,7 +33,7 @@ export const baseQueryWithReauth: BaseQueryFn<
     }
 
     /**
-     * Because import anything from auth.api.ts cause cycle import
+     * Because import anything from ./auth/auth.api.ts cause cycle import
      */
     const response = await baseQuery(
       {
@@ -44,18 +46,12 @@ export const baseQueryWithReauth: BaseQueryFn<
     );
 
     if (response.data) {
-      /**
-       * Because import anything from auth.slice.ts cause cycle import
-       */
-      api.dispatch({ type: 'auth/setState', payload: response.data });
+      api.dispatch(authActions.setState(response.data as AuthResponse));
 
       return baseQuery(args, api, extraOptions);
-    } else {
-      /**
-       * Because import anything from auth.slice.ts cause cycle import
-       */
-      api.dispatch({ type: 'auth/logout' });
     }
+
+    api.dispatch(authActions.logout());
   }
 
   return result;

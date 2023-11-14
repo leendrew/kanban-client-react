@@ -1,13 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Box, Stack, Typography, TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
+import { useDispatch } from '@/store';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { PATHS } from '@/config';
 import { Sheet, Button } from '@/components/ui';
-import { loginSchema } from '@/schemas';
-import Logo from '@/assets/logo.svg?react';
-import { useLoginMutation } from '@/store/auth';
+import { useLoginMutation, authActions } from '@/store/auth';
 import type { LoginPayload } from '@/store/auth';
+import { loginSchema } from '@/schemas';
+import { PATHS } from '@/config';
+import Logo from '@/assets/logo.svg?react';
 
 export function Login() {
   const {
@@ -23,11 +24,14 @@ export function Login() {
     },
   });
   const [login, { isLoading }] = useLoginMutation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = async (data: LoginPayload) => {
     try {
-      await login(data).unwrap();
+      const response = await login(data).unwrap();
+      dispatch(authActions.setState(response));
+
       navigate(PATHS.home);
     } catch (e) {
       console.log('login error', e);
