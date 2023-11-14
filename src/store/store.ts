@@ -3,14 +3,12 @@ import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from
 import type { TypedUseSelectorHook } from 'react-redux';
 import { api } from './api';
 import { authReducer } from './auth';
-import { boardsReducer } from './boards';
 import { config } from '@/config';
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     auth: authReducer,
-    boards: boardsReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
   devTools: config.isDev,
