@@ -7,7 +7,7 @@ export const HTTP = {
 };
 
 export const HTTP_STATUS = {
-  unathorized: 401,
+  unauthorized: 401,
 };
 
 export const reducerKey = {

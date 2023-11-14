@@ -23,7 +23,7 @@ export const baseQueryWithReauth: BaseQueryFn<
 > = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
 
-  if (result.error && result.error.status === HTTP_STATUS.unathorized) {
+  if (result.error && result.error.status === HTTP_STATUS.unauthorized) {
     const authState = (api.getState() as RootState).auth;
     const tokens = authState.tokens;
     if (!tokens) {
