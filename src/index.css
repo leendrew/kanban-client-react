@@ -1,9 +1,9 @@
 :root {
-  --bg-color_surface: #f6f8f9;
-  --bg-color_main: #ffffff;
-  --box-shadow_main: 0px 1px 2px 0px rgba(91, 104, 113, 0.32),
+  --bg-color_block--surface: #f6f8f9;
+  --bg-color_block--main: #ffffff;
+  --box-shadow--main: 0px 1px 2px 0px rgba(91, 104, 113, 0.32),
     0px 0px 1px 0px rgba(26, 32, 36, 0.32);
-  --border-color_main: #e5e9eb;
+  --border-color--main: #e5e9eb;
 }
 
 *,
@@ -13,20 +13,19 @@
 }
 
 html,
-body {
-  margin: 0;
-  height: 100vh;
+body,
+#root,
+main {
+  height: 100%;
 }
 
 #root {
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .main {
-  height: 100%;
-  background-color: var(--bg-color_surface);
+  background-color: var(--bg-color_block--surface);
 }
 
 img {
@@ -47,6 +46,6 @@ img {
   height: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
-  clip-path: inset(100%); /* ? */
-  white-space: nowrap; /* ? */
+  clip-path: inset(100%);
+  white-space: nowrap;
 }
