@@ -5,21 +5,25 @@ import { MainLayout, AuthLayout } from '@ui';
 import { Home, Register, Login } from '@/pages';
 import { WithAuth } from '@/hocs';
 
+const privateRoutes = {
+  index: false,
+  element: <WithAuth />,
+  children: [
+    {
+      path: PATHS.home,
+      element: <MainLayout />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+      ],
+    },
+  ],
+} satisfies RouteObject;
+
 const routes = [
-  {
-    path: PATHS.home,
-    element: <MainLayout />,
-    children: [
-      {
-        index: true,
-        element: (
-          <WithAuth>
-            <Home />
-          </WithAuth>
-        ),
-      },
-    ],
-  },
+  privateRoutes,
   {
     index: false,
     element: <AuthLayout />,
