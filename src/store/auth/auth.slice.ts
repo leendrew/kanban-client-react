@@ -33,7 +33,7 @@ const authSlice = createSlice({
       state.tokens = payload.tokens;
     },
     logout() {
-      localStorage.setItem(reducerKey.auth, '');
+      localStorage.removeItem(reducerKey.auth);
       return initialState;
     },
   },
