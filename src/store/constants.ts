@@ -4,7 +4,7 @@ export const HTTP = {
   put: 'put',
   patch: 'patch',
   delete: 'delete',
-};
+} as const;
 
 export const HTTP_STATUS = {
   unauthorized: 401,
@@ -13,4 +13,4 @@ export const HTTP_STATUS = {
 export const reducerKey = {
   auth: 'auth',
   boards: 'boards',
-};
+} as const;

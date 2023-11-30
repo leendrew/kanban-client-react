@@ -7,4 +7,4 @@ export const PATHS = {
   },
   boards: '/boards',
   tasks: '/tasks',
-};
+} as const;
