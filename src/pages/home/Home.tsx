@@ -1,14 +1,25 @@
-import { useTypedSelector } from '@/store';
-import { useGetAllBoardsQuery } from '@/store/boards';
+import { Box, Stack } from '@mui/material';
+import { Sheet } from '@ui';
+import { Boards } from '@/components';
 
 export function Home() {
-  const user = useTypedSelector((state) => state.auth.user!);
-  const { data } = useGetAllBoardsQuery(user.id);
-
   return (
     <>
-      home
-      {JSON.stringify(data)}
+      <Stack direction="column" gap={2}>
+        <Box
+          sx={{
+            padding: '2rem 1rem',
+          }}
+        >
+          <Sheet
+            sx={{
+              padding: '1.5rem 2rem',
+            }}
+          >
+            <Boards />
+          </Sheet>
+        </Box>
+      </Stack>
     </>
   );
 }

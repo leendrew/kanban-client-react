@@ -4,10 +4,10 @@ import type { RootState } from './store';
 import { authActions } from './auth/auth.slice';
 import type { AuthResponse } from './auth/auth.types';
 import { HTTP, HTTP_STATUS } from './constants';
-import { config, PATHS } from '@/config';
+import { envConfig, PATHS } from '@/config';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: config.apiUrl,
+  baseUrl: envConfig.apiUrl,
   prepareHeaders: (headers, { getState }) => {
     const tokens = (getState() as RootState).auth.tokens;
     if (tokens) {

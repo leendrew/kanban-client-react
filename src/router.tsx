@@ -1,6 +1,6 @@
 import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
-import { config, PATHS } from '@/config';
+import { envConfig, PATHS } from '@/config';
 import { MainLayout, AuthLayout } from '@ui';
 import { Home, Register, Login } from '@/pages';
 import { WithAuth } from '@/hocs';
@@ -40,4 +40,4 @@ const routes = [
   },
 ] satisfies RouteObject[];
 
-export const router = config.isDev ? createBrowserRouter(routes) : createHashRouter(routes);
+export const router = envConfig.isDev ? createBrowserRouter(routes) : createHashRouter(routes);

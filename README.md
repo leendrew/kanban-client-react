@@ -13,7 +13,7 @@
 - React Hook Form
 - zod
 
-## Start
+## Installation
 
 ### dev
 

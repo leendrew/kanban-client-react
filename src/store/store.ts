@@ -4,7 +4,7 @@ import type { TypedUseSelectorHook } from 'react-redux';
 import { api } from './api';
 import { authReducer } from './auth';
 import { reducerKey } from './constants';
-import { config } from '@/config';
+import { envConfig } from '@/config';
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +12,7 @@ export const store = configureStore({
     [reducerKey.auth]: authReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
-  devTools: config.isDev,
+  devTools: envConfig.isDev,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

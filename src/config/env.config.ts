@@ -1,5 +1,6 @@
-type Env = Record<string, { key: string; type: string | number | boolean }>;
-type ConfigType<T extends Env> = { [Key in keyof T]: T[Key]['type'] };
+type EnvValue = string | number | boolean;
+type Env = Record<string, { key: string; type: EnvValue }>;
+type EnvConfigType<T extends Env> = { [Key in keyof T]: T[Key]['type'] };
 
 const env = {
   baseUrl: { key: 'BASE_URL', type: String() },
@@ -10,15 +11,15 @@ const env = {
   isProd: { key: 'PROD', type: Boolean() },
 } satisfies Env;
 
-export type Config = ConfigType<typeof env>;
+export type EnvConfig = EnvConfigType<typeof env>;
 
-export const config = Object.entries(env).reduce((acc, [key, value]) => {
+export const envConfig = Object.entries(env).reduce((acc, [key, value]) => {
   // @ts-expect-error just because
   acc[key] = checkEnv(value.key, value.type);
   return acc;
-}, {} as Config);
+}, {} as EnvConfig);
 
-function checkEnv(env: string, type: string | number | boolean): string | number | boolean {
+function checkEnv(env: string, type: EnvValue): EnvValue {
   const envValue = import.meta.env[env];
   if (envValue === undefined) {
     throw new Error(`Check that '${env}' really exist in your .env file`);
