@@ -19,14 +19,14 @@
 
 ```bash
 cp .env.example .env.local
-yarn
-yarn dev
+pnpm i
+pnpm dev
 ```
 
 ### prod
 
 ```bash
 cp .env.example .env.production
-yarn
-yarn build && yarn preview
+pnpm i --frozen-lockfile
+pnpm build && pnpm preview
 ```
