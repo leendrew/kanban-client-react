@@ -2,8 +2,10 @@ import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
 import { envConfig, PATHS } from '@/config';
 import { MainLayout, AuthLayout } from '@/components/ui';
-import { Home, Register, Login } from '@/pages';
+import { HomePage, RegisterPage, LoginPage } from '@/pages';
 import { WithAuth } from '@/hocs';
+
+// TODO: extract into /routes/!private!public.routes.tsx
 
 const privateRoutes = {
   index: false,
@@ -15,7 +17,7 @@ const privateRoutes = {
       children: [
         {
           index: true,
-          element: <Home />,
+          element: <HomePage />,
         },
       ],
     },
@@ -30,11 +32,11 @@ const routes = [
     children: [
       {
         path: PATHS.auth.register,
-        element: <Register />,
+        element: <RegisterPage />,
       },
       {
         path: PATHS.auth.login,
-        element: <Login />,
+        element: <LoginPage />,
       },
     ],
   },

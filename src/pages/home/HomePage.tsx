@@ -1,8 +1,8 @@
 import { Box, Stack } from '@mui/material';
-import { Sheet } from '@ui';
+import { Sheet } from '@/components/ui';
 import { Boards } from '@/components';
 
-export function Home() {
+export function HomePage() {
   return (
     <>
       <Stack direction="column" gap={2}>
