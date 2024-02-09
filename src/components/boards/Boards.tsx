@@ -46,22 +46,26 @@ export function Boards() {
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="board" type="column" direction="horizontal">
+        <Droppable direction="horizontal" type="board" droppableId="board">
           {(provided) => (
-            <Stack
-              sx={{
-                overflowX: 'auto',
-              }}
-              direction="row"
-              gap={1}
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-            >
-              {boards.map((board) => (
-                <Column key={board.id} {...board} />
-              ))}
-              {provided.placeholder}
-            </Stack>
+            <>
+              <Stack
+                sx={{
+                  overflowX: 'auto',
+                  // boxShadow visible fix
+                  padding: '1px',
+                }}
+                direction="row"
+                gap={2}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {boards.map((board) => (
+                  <Column key={board.id} {...board} />
+                ))}
+                {provided.placeholder}
+              </Stack>
+            </>
           )}
         </Droppable>
       </DragDropContext>
