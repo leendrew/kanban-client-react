@@ -1,25 +1,25 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Box, Stack, Typography } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui';
 import { NameField, LoginField, PasswordField, ConfirmPasswordField } from './fields';
-import { useDispatch } from '@/store';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@ui';
-import { useRegisterMutation, authActions } from '@/store/auth';
-import type { RegisterPayload } from '@/store/auth';
 import { registerSchema } from '@/schemas';
+import type { RegisterSchema } from '@/schemas';
 import { PATHS } from '@/config';
 import Logo from '@/assets/logo.svg?react';
 
-// ! REFACTOR: move data fetching to one lvl up (widgets), add prop onSubmit: (data: RegisterPayload) => void
+interface RegisterFormProps {
+  onSubmit: (data: RegisterSchema) => void;
+  loading?: boolean;
+}
 
-export function RegisterForm() {
+export function RegisterForm({ onSubmit, loading = false }: RegisterFormProps) {
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<RegisterPayload>({
+  } = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       name: '',
@@ -28,25 +28,13 @@ export function RegisterForm() {
       confirmPassword: '',
     },
   });
-  const [register, { isLoading }] = useRegisterMutation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const onSubmit = async (data: RegisterPayload) => {
-    try {
-      const response = await register(data).unwrap();
-      dispatch(authActions.setState(response));
-
-      navigate(PATHS.home);
-    } catch (e) {
-      console.log('register error', e);
-    }
-  };
+  const onFormSubmit = handleSubmit(onSubmit);
 
   return (
     <>
       <Stack flexDirection="column" alignItems="center" gap={2}>
-        <Stack component="form" sx={{ width: '100%' }} gap={2} onSubmit={handleSubmit(onSubmit)}>
+        <Stack component="form" sx={{ width: '100%' }} gap={2} onSubmit={onFormSubmit}>
           <Stack direction="column" alignItems="center">
             <Link to={PATHS.home}>
               <Box sx={{ width: 130, height: 32 }}>
@@ -61,22 +49,14 @@ export function RegisterForm() {
             name="name"
             control={control}
             render={({ field }) => (
-              <NameField
-                error={!!errors.name}
-                helperText={errors?.name?.message as string}
-                {...field}
-              />
+              <NameField error={!!errors.name} helperText={errors?.name?.message} {...field} />
             )}
           />
           <Controller
             name="login"
             control={control}
             render={({ field }) => (
-              <LoginField
-                error={!!errors.login}
-                helperText={errors?.login?.message as string}
-                {...field}
-              />
+              <LoginField error={!!errors.login} helperText={errors?.login?.message} {...field} />
             )}
           />
           <Controller
@@ -85,7 +65,7 @@ export function RegisterForm() {
             render={({ field }) => (
               <PasswordField
                 error={!!errors.password}
-                helperText={errors?.password?.message as string}
+                helperText={errors?.password?.message}
                 {...field}
               />
             )}
@@ -96,12 +76,12 @@ export function RegisterForm() {
             render={({ field }) => (
               <ConfirmPasswordField
                 error={!!errors.confirmPassword}
-                helperText={errors?.confirmPassword?.message as string}
+                helperText={errors?.confirmPassword?.message}
                 {...field}
               />
             )}
           />
-          <Button type="submit" variant="contained" loading={isLoading}>
+          <Button type="submit" variant="contained" loading={loading}>
             Register
           </Button>
         </Stack>

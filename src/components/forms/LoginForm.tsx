@@ -1,56 +1,45 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Box, Stack, Typography } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
-import { Button } from '@ui';
-import { LoginField, PasswordField } from './fields';
-import { useDispatch } from '@/store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui';
-import type { LoginPayload } from '@/store/auth';
+import { LoginField, PasswordField } from './fields';
 import { loginSchema } from '@/schemas';
+import type { LoginSchema } from '@/schemas';
 import { PATHS } from '@/config';
 import Logo from '@/assets/logo.svg?react';
 
-// ! REFACTOR: move data fetching to one lvl up (widgets), add prop onSubmit: (data: LoginPayload) => void
+interface LoginFormProps {
+  onSubmit: (data: LoginSchema) => void;
+  loading?: boolean;
+}
 
-export function LoginForm() {
+export function LoginForm({ onSubmit, loading = false }: LoginFormProps) {
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<LoginPayload>({
+  } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       login: '',
       password: '',
     },
   });
-  const [login, { isLoading }] = useLoginMutation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const onSubmit = async (data: LoginPayload) => {
-    try {
-      const response = await login(data).unwrap();
-      dispatch(authActions.setState(response));
-
-      navigate(PATHS.home);
-    } catch (e) {
-      console.log('login error', e);
-    }
-  };
+  const onFormSubmit = handleSubmit(onSubmit);
 
   return (
     <>
       <Stack flexDirection="column" alignItems="center" gap={2}>
-        <Stack component="form" sx={{ width: '100%' }} gap={2} onSubmit={handleSubmit(onSubmit)}>
+        <Stack component="form" sx={{ width: '100%' }} gap={2} onSubmit={onFormSubmit}>
           <Stack direction="column" alignItems="center">
             <Link to={PATHS.home}>
               <Box sx={{ width: 130, height: 32 }}>
                 <Logo style={{ width: '100%', height: '100%' }} />
               </Box>
             </Link>
-            <Typography component="h1" variant="h5" sx={{ margin: '1rem 0' }}>
+            <Typography component="h1" sx={{ margin: '1rem 0' }} variant="h5">
               Login
             </Typography>
           </Stack>
@@ -58,11 +47,7 @@ export function LoginForm() {
             name="login"
             control={control}
             render={({ field }) => (
-              <LoginField
-                error={!!errors.login}
-                helperText={errors?.login?.message as string}
-                {...field}
-              />
+              <LoginField error={!!errors.login} helperText={errors?.login?.message} {...field} />
             )}
           />
           <Controller
@@ -71,12 +56,12 @@ export function LoginForm() {
             render={({ field }) => (
               <PasswordField
                 error={!!errors.password}
-                helperText={errors?.password?.message as string}
+                helperText={errors?.password?.message}
                 {...field}
               />
             )}
           />
-          <Button type="submit" variant="contained" loading={isLoading}>
+          <Button type="submit" variant="contained" loading={loading}>
             Login
           </Button>
         </Stack>
