@@ -1,5 +1,6 @@
 import { Draggable } from 'react-beautiful-dnd';
 import { Stack, Typography } from '@mui/material';
+import { DragHandle } from '@/components';
 import { Sheet } from '@/components/ui';
 import type { Task as TaskModel } from '@/store/tasks';
 
@@ -13,13 +14,9 @@ export function Task({ id, name, isCompleted, index }: TaskProps) {
       <Draggable draggableId={taskDraggableId} index={index}>
         {(provided) => (
           <>
-            <Sheet
-              sx={{ padding: '1rem' }}
-              ref={provided.innerRef}
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-            >
+            <Sheet sx={{ padding: '1rem' }} ref={provided.innerRef} {...provided.draggableProps}>
               <Stack direction="column" gap={1}>
+                <DragHandle {...provided.dragHandleProps} />
                 <Typography component="span" variant="body2">
                   {name}
                 </Typography>

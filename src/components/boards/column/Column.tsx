@@ -1,7 +1,7 @@
 import { Draggable } from 'react-beautiful-dnd';
 import { Stack, Typography } from '@mui/material';
 import { Sheet } from '@/components/ui';
-import { Droppable } from '@/components';
+import { DragHandle, Droppable } from '@/components';
 import { Task } from '../task';
 import type { Board as BoardModel } from '@/store/boards';
 
@@ -26,16 +26,8 @@ export function Column({ id, name, tasks, index }: ColumnProps) {
               {...draggableProvided.draggableProps}
             >
               <Stack direction="column" gap={2}>
-                <Typography
-                  component="h3"
-                  variant="subtitle2"
-                  textTransform="uppercase"
-                  sx={{
-                    marginTop: '0.5rem',
-                    paddingLeft: '0.5rem',
-                  }}
-                  {...draggableProvided.dragHandleProps}
-                >
+                <DragHandle {...draggableProvided.dragHandleProps} />
+                <Typography component="h3" variant="subtitle2" textTransform="uppercase">
                   {name}
                 </Typography>
                 <Droppable direction="vertical" type="column" droppableId={columnDraggableId}>
