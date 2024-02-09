@@ -1,20 +1,13 @@
 import { forwardRef } from 'react';
-import { TextField } from '@mui/material';
-import type { TextFieldProps } from '@mui/material';
+import { BasePasswordField } from './BasePasswordField';
+import type { BasePasswordFieldPropsWithoutRef } from './BasePasswordField';
 
-export const ConfirmPasswordField = forwardRef(function ConfirmPasswordField(
-  props: TextFieldProps,
-  ref,
-) {
-  return (
-    <>
-      <TextField
-        label="Confirm Password"
-        variant="outlined"
-        size="small"
-        {...props}
-        inputRef={ref}
-      />
-    </>
-  );
-});
+export const ConfirmPasswordField = forwardRef<HTMLInputElement, BasePasswordFieldPropsWithoutRef>(
+  function ConfirmPasswordField(props, ref) {
+    return (
+      <>
+        <BasePasswordField inputRef={ref} label="Confirm Password" {...props} />
+      </>
+    );
+  },
+);

@@ -1,11 +1,13 @@
 import { forwardRef } from 'react';
-import { TextField } from '@mui/material';
-import type { TextFieldProps } from '@mui/material';
+import { BaseField } from './BaseField';
+import type { BaseFieldPropsWithoutRef } from './BaseField';
 
-export const LoginField = forwardRef(function LoginField(props: TextFieldProps, ref) {
-  return (
-    <>
-      <TextField label="Login" variant="outlined" size="small" {...props} inputRef={ref} />
-    </>
-  );
-});
+export const LoginField = forwardRef<HTMLInputElement, BaseFieldPropsWithoutRef>(
+  function LoginField(props, ref) {
+    return (
+      <>
+        <BaseField label="Login" {...props} inputRef={ref} />
+      </>
+    );
+  },
+);
