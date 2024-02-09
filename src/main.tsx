@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import { RouterProvider } from 'react-router-dom';
 import { store } from '@/store';
 import { authActions } from '@/store/auth';
-import { theme } from '@/config';
+import { muiConfig } from '@/config';
 import { router } from '@/router';
 import 'react-toastify/dist/ReactToastify.min.css';
 import './index.css';
@@ -17,7 +17,7 @@ function bootstrap() {
   createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={muiConfig}>
           <RouterProvider router={router} />
           <CssBaseline />
           <ToastContainer position="bottom-right" theme={muiConfig.palette.mode} draggable />
