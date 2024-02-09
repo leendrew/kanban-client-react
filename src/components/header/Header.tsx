@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Box, Container, Stack } from '@mui/material';
-import { Button } from '@ui';
+import { Button } from '@/components/ui';
 import { useDispatch, useSelector } from '@/store';
 import { authActions } from '@/store/auth';
 import { PATHS } from '@/config';

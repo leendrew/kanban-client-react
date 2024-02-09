@@ -1,4 +1,4 @@
-import { Sheet } from '@ui';
+import { Sheet } from '@/components/ui';
 import type { Task as TaskModel } from '@/store/tasks';
 import { Stack, Typography } from '@mui/material';
 

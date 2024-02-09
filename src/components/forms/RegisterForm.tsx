@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Box, Stack, Typography } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
+import { Button } from '@/components/ui';
 import { NameField, LoginField, PasswordField, ConfirmPasswordField } from './fields';
 import { useDispatch } from '@/store';
 import { zodResolver } from '@hookform/resolvers/zod';

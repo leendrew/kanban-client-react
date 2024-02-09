@@ -1,7 +1,7 @@
 import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
 import { envConfig, PATHS } from '@/config';
-import { MainLayout, AuthLayout } from '@ui';
+import { MainLayout, AuthLayout } from '@/components/ui';
 import { Home, Register, Login } from '@/pages';
 import { WithAuth } from '@/hocs';
 

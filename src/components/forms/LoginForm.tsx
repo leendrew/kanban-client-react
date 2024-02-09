@@ -5,7 +5,7 @@ import { Button } from '@ui';
 import { LoginField, PasswordField } from './fields';
 import { useDispatch } from '@/store';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useLoginMutation, authActions } from '@/store/auth';
+import { Button } from '@/components/ui';
 import type { LoginPayload } from '@/store/auth';
 import { loginSchema } from '@/schemas';
 import { PATHS } from '@/config';

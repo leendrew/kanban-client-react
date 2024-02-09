@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { Sheet } from '@ui';
+import { Sheet } from '@/components/ui';
 import { Task } from '../task';
 import type { Board as BoardModel } from '@/store/boards';
 

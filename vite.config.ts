@@ -12,7 +12,6 @@ export default ({ mode }) => {
     resolve: {
       alias: {
         '@': resolve(__dirname, join('.', 'src')),
-        '@ui': resolve(__dirname, join('.', 'src', 'components', 'ui')),
       },
     },
     server: {
