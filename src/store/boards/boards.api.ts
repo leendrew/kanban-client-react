@@ -1,5 +1,3 @@
-import { PATHS } from '@/config';
-import { api } from '../api';
 import type {
   GetAllBoardsPayload,
   GetAllBoardsResponse,
@@ -10,7 +8,7 @@ import type {
   DeleteOneBoardByIdPayload,
   DeleteOneBoardByIdResponse,
 } from './boards.types';
-import { HTTP } from '../constants';
+import { api, HTTP, PATHS } from '@/config';
 
 export const boardsApi = api.injectEndpoints({
   endpoints: (builder) => ({

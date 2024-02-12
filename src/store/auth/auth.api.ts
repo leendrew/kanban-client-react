@@ -6,9 +6,7 @@ import type {
   RefreshPayload,
   RefreshResponse,
 } from './auth.types';
-import { api } from '../api';
-import { HTTP } from '../constants';
-import { PATHS } from '@/config/constants';
+import { api, HTTP, PATHS } from '@/config';
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({

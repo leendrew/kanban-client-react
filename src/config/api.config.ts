@@ -1,11 +1,11 @@
 import { fetchBaseQuery, createApi } from '@reduxjs/toolkit/query/react';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import { toast } from 'react-toastify';
-import type { RootState } from './store';
-import { authActions } from './auth/auth.slice';
-import type { AuthResponse } from './auth/auth.types';
 import { HTTP, HTTP_STATUS } from './constants';
-import { envConfig, PATHS } from '@/config';
+import type { RootState } from '@/store';
+import { authActions, authApi } from '@/store/auth';
+import type { AuthResponse } from '@/store/auth';
+import { envConfig, PATHS, reducerKey } from '@/config';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: envConfig.apiUrl,
@@ -25,11 +25,13 @@ export const baseQueryWithReAuth: BaseQueryFn<
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
+  const authState = (api.getState() as RootState).auth;
+  const tokens = authState.tokens;
+  console.log(authApi.endpoints.refresh.initiate({ refreshToken: tokens?.refresh || '' }));
 
   if (result.error) {
     if (result.error.status === HTTP_STATUS.unauthorized) {
-      const authState = (api.getState() as RootState).auth;
-      const tokens = authState.tokens;
+      // state
       if (!tokens) {
         return result;
       }
@@ -66,7 +68,7 @@ export const baseQueryWithReAuth: BaseQueryFn<
 };
 
 export const api = createApi({
-  reducerPath: 'api',
+  reducerPath: reducerKey.api,
   baseQuery: baseQueryWithReAuth,
   endpoints: () => ({}),
 });

@@ -1,12 +1,10 @@
-import { PATHS } from '@/config';
-import { api } from '../api';
 import type {
   UpdateOneTaskByIdPayload,
   UpdateOneTaskByIdResponse,
   DeleteOneTaskByIdPayload,
   DeleteOneTaskByIdResponse,
 } from './tasks.types';
-import { HTTP } from '../constants';
+import { api, HTTP, PATHS } from '@/config';
 
 export const tasksApi = api.injectEndpoints({
   endpoints: (builder) => ({

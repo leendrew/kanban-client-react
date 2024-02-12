@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { AuthState, AuthResponse } from './auth.types';
-import { reducerKey } from '../constants';
+import { reducerKey } from '@/config';
 
 const initialState: AuthState = {
   user: null,
