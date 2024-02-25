@@ -1,2 +1,2 @@
-export * from './droppable';
-export * from './drag-handle';
+export * from './Droppable';
+export * from './DragHandle';
