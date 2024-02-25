@@ -7,7 +7,13 @@ export function WithAuth() {
   const isAuth = useSelector((store) => !!store.auth.user);
 
   if (!isAuth) {
-    return <Navigate to={PATHS.auth.login} replace state={{ from: location }} />;
+    return (
+      <Navigate
+        to={PATHS.auth.login}
+        replace
+        state={{ from: location }}
+      />
+    );
   }
 
   return <Outlet />;

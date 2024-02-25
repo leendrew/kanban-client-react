@@ -6,7 +6,11 @@ export const NameField = forwardRef<HTMLInputElement, BaseFieldPropsWithoutRef>(
   function NameField(props, ref) {
     return (
       <>
-        <BaseField inputRef={ref} label="Name" {...props} />
+        <BaseField
+          inputRef={ref}
+          label="Name"
+          {...props}
+        />
       </>
     );
   },

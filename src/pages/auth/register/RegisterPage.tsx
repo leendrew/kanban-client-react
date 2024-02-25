@@ -33,7 +33,10 @@ export function RegisterPage() {
               padding: '2rem 1.5rem',
             }}
           >
-            <RegisterForm onSubmit={onSubmit} loading={isLoading} />
+            <RegisterForm
+              onSubmit={onSubmit}
+              loading={isLoading}
+            />
           </Sheet>
         </Box>
       </Container>

@@ -37,7 +37,11 @@ export function Header() {
             </Link>
             {isAuth && (
               <Link to={PATHS.auth.login}>
-                <Button color="error" variant="text" onClick={onLogoutClick}>
+                <Button
+                  color="error"
+                  variant="text"
+                  onClick={onLogoutClick}
+                >
                   Logout
                 </Button>
               </Link>

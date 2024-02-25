@@ -10,7 +10,11 @@ export type BaseFieldPropsWithoutRef = ExtractRef<BaseFieldProps>;
 export function BaseField({ ...props }: BaseFieldProps) {
   return (
     <>
-      <TextField variant="outlined" size="small" {...props} />
+      <TextField
+        variant="outlined"
+        size="small"
+        {...props}
+      />
     </>
   );
 }

@@ -11,13 +11,26 @@ export function Task({ id, name, isCompleted, index }: TaskProps) {
 
   return (
     <>
-      <Draggable draggableId={taskDraggableId} index={index}>
+      <Draggable
+        draggableId={taskDraggableId}
+        index={index}
+      >
         {(provided) => (
           <>
-            <Sheet sx={{ padding: '1rem' }} ref={provided.innerRef} {...provided.draggableProps}>
-              <Stack direction="column" gap={1}>
+            <Sheet
+              sx={{ padding: '1rem' }}
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+            >
+              <Stack
+                direction="column"
+                gap={1}
+              >
                 <DragHandle {...provided.dragHandleProps} />
-                <Typography component="span" variant="body2">
+                <Typography
+                  component="span"
+                  variant="body2"
+                >
                   {name}
                 </Typography>
                 <div>{`${isCompleted}`}</div>

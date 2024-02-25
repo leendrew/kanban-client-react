@@ -46,7 +46,11 @@ export function Boards() {
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable direction="horizontal" type="board" droppableId="board">
+        <Droppable
+          direction="horizontal"
+          type="board"
+          droppableId="board"
+        >
           {(provided) => (
             <>
               <Stack
@@ -61,7 +65,10 @@ export function Boards() {
                 {...provided.droppableProps}
               >
                 {boards.map((board) => (
-                  <Column key={board.id} {...board} />
+                  <Column
+                    key={board.id}
+                    {...board}
+                  />
                 ))}
                 {provided.placeholder}
               </Stack>

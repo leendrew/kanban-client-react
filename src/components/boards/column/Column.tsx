@@ -12,7 +12,10 @@ export function Column({ id, name, tasks, index }: ColumnProps) {
 
   return (
     <>
-      <Draggable draggableId={columnDraggableId} index={index}>
+      <Draggable
+        draggableId={columnDraggableId}
+        index={index}
+      >
         {(draggableProvided) => (
           <>
             <Sheet
@@ -25,12 +28,23 @@ export function Column({ id, name, tasks, index }: ColumnProps) {
               ref={draggableProvided.innerRef}
               {...draggableProvided.draggableProps}
             >
-              <Stack direction="column" gap={2}>
+              <Stack
+                direction="column"
+                gap={2}
+              >
                 <DragHandle {...draggableProvided.dragHandleProps} />
-                <Typography component="h3" variant="subtitle2" textTransform="uppercase">
+                <Typography
+                  component="h3"
+                  variant="subtitle2"
+                  textTransform="uppercase"
+                >
                   {name}
                 </Typography>
-                <Droppable direction="vertical" type="column" droppableId={columnDraggableId}>
+                <Droppable
+                  direction="vertical"
+                  type="column"
+                  droppableId={columnDraggableId}
+                >
                   {(provided) => (
                     <>
                       <Stack
@@ -41,7 +55,13 @@ export function Column({ id, name, tasks, index }: ColumnProps) {
                       >
                         {index}
                         {!tasks.length && <div>No tasks :(</div>}
-                        {!!tasks.length && tasks.map((task) => <Task key={task.id} {...task} />)}
+                        {!!tasks.length &&
+                          tasks.map((task) => (
+                            <Task
+                              key={task.id}
+                              {...task}
+                            />
+                          ))}
                         {provided.placeholder}
                       </Stack>
                     </>

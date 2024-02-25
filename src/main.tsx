@@ -20,7 +20,11 @@ function bootstrap() {
         <ThemeProvider theme={muiConfig}>
           <RouterProvider router={router} />
           <CssBaseline />
-          <ToastContainer position="bottom-right" theme={muiConfig.palette.mode} draggable />
+          <ToastContainer
+            position="bottom-right"
+            theme={muiConfig.palette.mode}
+            draggable
+          />
         </ThemeProvider>
       </Provider>
     </React.StrictMode>,

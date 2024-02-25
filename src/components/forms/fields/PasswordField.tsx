@@ -6,7 +6,11 @@ export const PasswordField = forwardRef<HTMLInputElement, BasePasswordFieldProps
   function PasswordField(props, ref) {
     return (
       <>
-        <BasePasswordField inputRef={ref} label="Password" {...props} />
+        <BasePasswordField
+          inputRef={ref}
+          label="Password"
+          {...props}
+        />
       </>
     );
   },

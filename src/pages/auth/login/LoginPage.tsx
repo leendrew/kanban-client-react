@@ -33,7 +33,10 @@ export function LoginPage() {
               padding: '2rem 1.5rem',
             }}
           >
-            <LoginForm onSubmit={onSubmit} loading={isLoading} />
+            <LoginForm
+              loading={isLoading}
+              onSubmit={onSubmit}
+            />
           </Sheet>
         </Box>
       </Container>

@@ -31,15 +31,31 @@ export function LoginForm({ onSubmit, loading = false }: LoginFormProps) {
 
   return (
     <>
-      <Stack flexDirection="column" alignItems="center" gap={2}>
-        <Stack component="form" sx={{ width: '100%' }} gap={2} onSubmit={onFormSubmit}>
-          <Stack direction="column" alignItems="center">
+      <Stack
+        flexDirection="column"
+        alignItems="center"
+        gap={2}
+      >
+        <Stack
+          component="form"
+          sx={{ width: '100%' }}
+          gap={2}
+          onSubmit={onFormSubmit}
+        >
+          <Stack
+            direction="column"
+            alignItems="center"
+          >
             <Link to={PATHS.home}>
               <Box sx={{ width: 130, height: 32 }}>
                 <Logo style={{ width: '100%', height: '100%' }} />
               </Box>
             </Link>
-            <Typography component="h1" sx={{ margin: '1rem 0' }} variant="h5">
+            <Typography
+              component="h1"
+              sx={{ margin: '1rem 0' }}
+              variant="h5"
+            >
               Login
             </Typography>
           </Stack>
@@ -47,7 +63,11 @@ export function LoginForm({ onSubmit, loading = false }: LoginFormProps) {
             name="login"
             control={control}
             render={({ field }) => (
-              <LoginField error={!!errors.login} helperText={errors?.login?.message} {...field} />
+              <LoginField
+                error={!!errors.login}
+                helperText={errors?.login?.message}
+                {...field}
+              />
             )}
           />
           <Controller
@@ -61,7 +81,11 @@ export function LoginForm({ onSubmit, loading = false }: LoginFormProps) {
               />
             )}
           />
-          <Button type="submit" variant="contained" loading={loading}>
+          <Button
+            type="submit"
+            variant="contained"
+            loading={loading}
+          >
             Login
           </Button>
         </Stack>

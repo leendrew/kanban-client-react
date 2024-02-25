@@ -5,7 +5,10 @@ import { Boards } from '@/components';
 export function HomePage() {
   return (
     <>
-      <Stack direction="column" gap={2}>
+      <Stack
+        direction="column"
+        gap={2}
+      >
         <Box
           sx={{
             padding: '2rem 1rem',

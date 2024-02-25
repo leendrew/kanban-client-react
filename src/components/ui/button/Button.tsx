@@ -14,11 +14,21 @@ export function Button({
   ...rest
 }: LoadingButtonProps) {
   return (
-    <MuiButton disabled={disabled || loading} {...rest}>
-      <Stack direction="row" alignItems="center" gap={1}>
+    <MuiButton
+      disabled={disabled || loading}
+      {...rest}
+    >
+      <Stack
+        direction="row"
+        alignItems="center"
+        gap={1}
+      >
         {loading && (
           <>
-            <CircularProgress color="inherit" size="1rem" />
+            <CircularProgress
+              color="inherit"
+              size="1rem"
+            />
             {loadingText}
           </>
         )}
